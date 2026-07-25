@@ -1,0 +1,73 @@
+/* ===========================
+ Light Theme 
+=========================== */
+
+:root {
+ 
+  --bg-main: #f7f4ee;
+  --bg-surface: #ebe9e4;
+
+ 
+  --primary: #4A2E2B;
+  --primary-hover: #3B2422;
+
+  --secondary: #D4A373;
+  --secondary-hover: #C49260;
+
+  --text-primary: #1A1A1A;
+  --text-secondary: #5F5F5F;
+  --text-muted: #8C8C8C;
+
+  --border-color: #E7E1D8;
+
+  --success: #198754;
+  --danger: #DC3545;
+  --warning: #FFC107;
+  --info: #0DCAF0;
+
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+
+  --transition: 0.3s ease;
+
+
+    --space-xs:.25rem;
+    --space-sm:.5rem;
+    --space-md:1rem;
+    --space-lg:1.5rem;
+    --space-xl:2rem;
+
+    --header-height:70px;
+
+    --container-width:1320px;
+}
+/* ===========================
+   Dark Theme 
+=========================== */
+
+[data-theme="dark"] {
+
+  --bg-main: #12131C;
+  --bg-surface: #1E1F2C;
+
+  --primary: #E0A96D;
+  --primary-hover: #F0B97E;
+
+  --secondary: #B08968;
+  --secondary-hover: #C29873;
+
+  --text-primary: #EAEAEA;
+  --text-secondary: #CFCFCF;
+  --text-muted: #9D9D9D;
+
+  --border-color: #333648;
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.5);
+}
