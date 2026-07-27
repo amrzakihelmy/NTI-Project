@@ -79,6 +79,56 @@ hr {
   background: var(--bg-surface);
   width: 350px;
 }
+.auth-section{
+    height: 100vh;
+}
+.auth-banner {
+  height: 100%;
+ 
+  background-image: linear-gradient(#301b03d7, #301b03d7), url('../assets/images/auth.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+.quote{
+    max-width: 450px;
+}
+.quote::before{
+    content: " ‘‘";
+    font-size: 3.5rem;
+    color: var(--secondary);
+    font-weight: bold;
+   
+}
+.quote::after{
+    content: " ’’";
+    font-size: 3.5rem;
+    color: var(--secondary);
+    font-weight: bold;
+    
+   
+}
+.author{
+    color:var(--secondary)
+}
+.text-auth-form{
+    color:var(--text-info) ;
+}
+.icon-pass {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.icon-pass:hover {
+  color: var(--primary);
+}
+
 /* ====================
    BOOTSTRAP OVERRIDES
    ==================== */
@@ -89,6 +139,12 @@ hr {
     border-color: var(--primary);
     color: #fff;
 
+}
+.btn-primary:disabled {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #fff;
+  opacity: 0.6;
 }
 
 .btn-primary:hover {
@@ -195,6 +251,7 @@ hr {
     color: var(--text-primary);
 }
 
+
 .text-secondary-custom {
     color: var(--text-secondary);
 }
@@ -214,3 +271,4 @@ hr {
 .shadow-custom {
     box-shadow: var(--shadow-sm);
 }
+
