@@ -1,0 +1,27 @@
+.book-image img{
+
+    width:100%;
+    border-radius:20px;
+
+}
+
+.stock{
+
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    font-size:15px;
+
+}
+
+h1{
+
+    font-size:52px;
+
+}
+
+p{
+
+    line-height:1.8;
+
+}

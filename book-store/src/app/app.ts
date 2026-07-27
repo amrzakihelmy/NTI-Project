@@ -1,9 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {Nav} from '../shared/components/nav/nav'
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { Nav } from '../shared/components/nav/nav';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Nav],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    Nav
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
