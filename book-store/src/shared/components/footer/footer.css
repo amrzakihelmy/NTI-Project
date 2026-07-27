@@ -1,0 +1,30 @@
+.footer {
+  background-color: var(--bg-surface);
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.footer-title {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links li {
+  margin-bottom: var(--space-xs);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}

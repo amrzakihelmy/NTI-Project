@@ -1,0 +1,45 @@
+<div class="admin-layout d-flex">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar d-flex flex-column">
+    <div class="sidebar-logo p-3">
+      <app-logo></app-logo>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a routerLink="dashboard" routerLinkActive="active" class="sidebar-link">
+        <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
+      </a>
+      <a routerLink="add-book" routerLinkActive="active" class="sidebar-link">
+        <i class="bi bi-plus-circle"></i> <span>Add Book</span>
+      </a>
+      <a routerLink="manage-books" routerLinkActive="active" class="sidebar-link">
+        <i class="bi bi-collection"></i> <span>Manage Books</span>
+      </a>
+      <a routerLink="sales-analytics" routerLinkActive="active" class="sidebar-link">
+        <i class="bi bi-graph-up"></i> <span>Sales Analytics</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer p-3 mt-auto">
+      <a href="#" (click)="logout($event)" class="sidebar-link logout-link">
+        <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="admin-main flex-grow-1">
+    <header class="admin-topbar d-flex align-items-center justify-content-between px-4">
+      <h5 class="mb-0 admin-page-title">Admin Panel</h5>
+      <a class="theme-toggle" role="button" (click)="toggleTheme()">
+        <i class="bi bi-moon"></i>
+      </a>
+    </header>
+
+    <main class="admin-content p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</div>
