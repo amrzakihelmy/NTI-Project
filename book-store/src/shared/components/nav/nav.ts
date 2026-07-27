@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import {Logo} from  '../logo/logo';
 import { RouterLink } from '@angular/router';
+import { Logo } from '../logo/logo';
+
 @Component({
   selector: 'app-nav',
-  imports: [Logo,RouterLink],
+  standalone: true,
+  imports: [Logo, RouterLink],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })

@@ -3,8 +3,18 @@
   <app-logo></app-logo>
   <div class="d-flex align-items-center">
       <input class="form-control mx-5" type="search" placeholder="🔍 Search books ,authors ...." aria-label="Search">
- <a   class="theme-toggle"  role="button" >  <i class="bi bi-moon "></i></a>
+ 
+    
+       <a routerLink="/wishlist" class="nav-link position-relative">
 
+    <i class="bi bi-heart"></i>
+
+    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+        1
+    </span>
+
+</a>
+    
      </div>
     <button  class="btn btn-secondry m-2" routerLink='/login'>Log in</button>
    <button  class="btn btn-primary" routerLink='/sign-up'>Sign in</button>

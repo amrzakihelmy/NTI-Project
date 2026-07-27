@@ -6,6 +6,9 @@ import { Admin } from '../pages/admin/admin';
 import { AdminLayout } from '../Layouts/admin-layout/admin-layout';
 import { CustomerLayout } from '../Layouts/customer-layout/customer-layout';
 
+import { BookDetails } from './pages/book-details/book-details';
+import { Wishlist } from './pages/wishlist/wishlist';
+
 export const routes: Routes = [
     {path:"",redirectTo:"home",pathMatch:"full"},
     {path:"home",component:Home},
@@ -18,12 +21,20 @@ export const routes: Routes = [
     path: '',
     component: CustomerLayout,
     children: [
+      {
+        path: 'books/:id',
+        component: BookDetails
+      },
+      {
+        path: 'wishlist',
+        component: Wishlist
+      }
+
+      // ضيفي باقي الـ routes هنا لما الفريق يخلصها
       // { path: '', component: Home },
       // { path: 'books', component: Books },
-      // { path: 'books/:id', component: BookDetails },
       // { path: 'login', component: Login },
       // { path: 'register', component: Register },
-      // { path: 'wishlist', component: Wishlist },
       // { path: 'cart', component: Cart },
       // { path: 'checkout', component: Checkout },
     ]
@@ -31,14 +42,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayout,
-    // canActivate: [adminGuard],
     children: [
       // { path: 'dashboard', component: Dashboard },
       // { path: 'add-book', component: AddBook },
       // { path: 'manage-books', component: ManageBooks },
       // { path: 'sales-analytics', component: SalesAnalytics },
-      // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
-  },
-  // { path: '**', component: NotFound }
+  }
 ];
