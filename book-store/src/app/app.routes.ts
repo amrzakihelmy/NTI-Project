@@ -1,20 +1,22 @@
 import { Routes } from '@angular/router';
-import {Login} from '../pages/auth/login/login';
+import { Login } from '../pages/auth/login/login';
 import { Register } from '../pages/auth/register/register';
 import { Home } from '../pages/home/home';
 import { Admin } from '../pages/admin/admin';
 import { AdminLayout } from '../Layouts/admin-layout/admin-layout';
 import { CustomerLayout } from '../Layouts/customer-layout/customer-layout';
 
+
+import { NotFound } from './pages/not-found/not-found';
 import { BookDetails } from './pages/book-details/book-details';
 import { Wishlist } from './pages/wishlist/wishlist';
 
 export const routes: Routes = [
-    {path:"",redirectTo:"home",pathMatch:"full"},
-    {path:"home",component:Home},
-    {path:"login",component:Login},
-    {path:"sign-up",component:Register},
-    {path:"admin",component:Admin},
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "home", component: Home },
+  { path: "login", component: Login },
+  { path: "sign-up", component: Register },
+  { path: "admin", component: Admin },
 
 
   {
@@ -48,5 +50,10 @@ export const routes: Routes = [
       // { path: 'manage-books', component: ManageBooks },
       // { path: 'sales-analytics', component: SalesAnalytics },
     ]
-  }
+  },
+
+
+
+  // MUST be last:
+  { path: '**', component: NotFound }
 ];
