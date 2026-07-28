@@ -6,7 +6,7 @@
 
   <div class="row g-4">
 
-    @for(book of wishlistBooks; track book.id){
+    @for(book of getWishlistBooks(); track book.id){
 
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
@@ -35,13 +35,25 @@
               View Details
             </button>
 
-            <button class="btn btn-outline-danger w-100">
+            <button
+              class="btn btn-outline-danger w-100"
+              (click)="removeFromWishlist(book.id)">
               Remove
             </button>
 
           </div>
 
         </div>
+
+      </div>
+
+    } @empty {
+
+      <div class="col-12 text-center py-5">
+
+        <h5 class="fw-bold text-primary">
+          Your wishlist is empty
+        </h5>
 
       </div>
 

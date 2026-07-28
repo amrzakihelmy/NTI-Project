@@ -10,6 +10,7 @@ import { CustomerLayout } from './Layouts/customer-layout/customer-layout';
 import { NotFound } from './pages/not-found/not-found';
 import { BookDetails } from './pages/book-details/book-details';
 import { Wishlist } from './pages/wishlist/wishlist';
+import { Cart } from './pages/cart/cart';
 import { AddBook } from './pages/Admin/add-book/add-book';
 import { ListBook } from './pages/Admin/list-book/list-book';
 import { UpdateBook } from './pages/Admin/update-book/update-book';
@@ -32,13 +33,16 @@ export const routes: Routes = [
       {
         path: 'wishlist',
         component: Wishlist
+      },
+      {
+        path: 'cart',
+        component: Cart
       }
 
       // ضيفي باقي الـ routes هنا لما الفريق يخلصها
   
       // { path: 'books', component: Books },
    
-      // { path: 'cart', component: Cart },
       // { path: 'checkout', component: Checkout },
     ]
   },

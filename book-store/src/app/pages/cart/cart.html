@@ -1,0 +1,121 @@
+<div class="container py-5">
+
+  <h2 class="mb-4 text-primary fw-bold">
+    My Cart
+  </h2>
+
+  @if (getCartRows().length > 0) {
+
+    <div class="table-responsive">
+
+      <table class="table align-middle">
+
+        <thead>
+
+          <tr>
+            <th>Book</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for (row of getCartRows(); track row.book.id) {
+
+            <tr>
+
+              <td class="d-flex align-items-center gap-3">
+
+                <img
+                  [src]="row.book.image || 'https://placehold.co/60x80'"
+                  [alt]="row.book.title"
+                  class="cart-thumb rounded">
+
+                <div>
+                  <div class="fw-semibold">{{ row.book.title }}</div>
+                  <div class="text-muted small">{{ row.book.author }}</div>
+                </div>
+
+              </td>
+
+              <td>${{ row.book.price }}</td>
+
+              <td>
+
+                <div class="d-flex align-items-center gap-2">
+
+                  <button
+                    class="btn btn-sm btn-outline-secondary"
+                    (click)="decreaseQuantity(row.book.id, row.quantity)">
+                    -
+                  </button>
+
+                  <span>{{ row.quantity }}</span>
+
+                  <button
+                    class="btn btn-sm btn-outline-secondary"
+                    (click)="increaseQuantity(row.book.id, row.quantity)">
+                    +
+                  </button>
+
+                </div>
+
+              </td>
+
+              <td class="fw-bold text-success">
+                ${{ (row.book.price * row.quantity).toFixed(2) }}
+              </td>
+
+              <td>
+
+                <button
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="removeFromCart(row.book.id)">
+                  Remove
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="d-flex justify-content-end align-items-center gap-3 mt-4">
+
+      <h4 class="mb-0">
+        Total: <span class="text-success">${{ getTotal().toFixed(2) }}</span>
+      </h4>
+
+      <button class="btn btn-primary btn-lg">
+        Checkout
+      </button>
+
+    </div>
+
+  } @else {
+
+    <div class="text-center py-5">
+
+      <h5 class="fw-bold text-primary mb-3">
+        Your cart is empty
+      </h5>
+
+      <a routerLink="/home" class="btn btn-primary">
+        Browse Books
+      </a>
+
+    </div>
+
+  }
+
+</div>

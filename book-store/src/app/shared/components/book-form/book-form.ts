@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book} from '../../../core/service/models/book.model';
 import { BookService } from '../../../core/service/book.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-book-form',
   standalone:true,
@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
   templateUrl: './book-form.html',
   styleUrl: './book-form.css',
 })
-export class BookForm {
-  mode: 'add' | 'edit' = 'add';
+export class BookForm implements OnInit {
+  @Input() mode: 'add' | 'edit' = 'add';
 
 book: Book = {
   id:0,
@@ -28,9 +28,25 @@ book: Book = {
 };
   constructor(
     private bookService:BookService,
-    private router: Router
- 
+    private router: Router,
+    private route: ActivatedRoute
+
   ) {}
+
+  ngOnInit(): void {
+
+    if (this.mode === 'edit') {
+
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      const existingBook = this.bookService.getBookById(id);
+
+      if (existingBook) {
+        this.book = { ...existingBook };
+      }
+
+    }
+
+  }
   uploadImage(event: Event): void {
 
   const input = event.target as HTMLInputElement;
