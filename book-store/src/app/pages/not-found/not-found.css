@@ -1,0 +1,28 @@
+.not-found-wrapper {
+  background-color: var(--bg-main);
+  transition: var(--transition);
+}
+
+.not-found-card {
+  max-width: 550px;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+}
+
+.not-found-code {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--secondary);
+  letter-spacing: -2px;
+
+  @media (min-width: 768px) {
+    font-size: 7rem;
+  }
+}
+
+.not-found-desc {
+  max-width: 420px;
+}

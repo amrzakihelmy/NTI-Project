@@ -6,6 +6,8 @@ import { Home } from './pages/home/home';
 import { AdminLayout } from './Layouts/admin-layout/admin-layout';
 import { CustomerLayout } from './Layouts/customer-layout/customer-layout';
 
+
+import { NotFound } from './pages/not-found/not-found';
 import { BookDetails } from './pages/book-details/book-details';
 import { Wishlist } from './pages/wishlist/wishlist';
 import { AddBook } from './pages/Admin/add-book/add-book';
@@ -54,5 +56,10 @@ export const routes: Routes = [
       { path: 'list-books', component: ListBook },
       // { path: 'sales-analytics', component: SalesAnalytics },
     ]
-  }
+  },
+
+
+
+  // MUST be last:
+  { path: '**', component: NotFound }
 ];
