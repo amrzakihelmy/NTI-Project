@@ -1,11 +1,11 @@
-import { AuthService } from './../../../app/core/service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 import { Component } from '@angular/core';
 import { AuthImg } from '../../../shared/components/auth-img/auth-img';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { User } from '../../../app/core/service/models/user.model';
+import { User } from '../../../core/service/models/user.model';
 @Component({
   selector: 'app-register',
   standalone:true,

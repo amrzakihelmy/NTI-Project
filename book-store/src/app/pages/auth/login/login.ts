@@ -1,4 +1,4 @@
-import { AuthService } from './../../../app/core/service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 import { Component } from '@angular/core';
 import { AuthImg } from '../../../shared/components/auth-img/auth-img';
 import { CommonModule } from '@angular/common';

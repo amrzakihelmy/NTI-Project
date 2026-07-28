@@ -113,7 +113,7 @@ hr {
     color:var(--secondary)
 }
 .text-auth-form{
-    color:var(--text-info) ;
+    color:var(--primary) ;
 }
 .icon-pass {
   position: absolute;
@@ -132,7 +132,13 @@ hr {
 /* ====================
    BOOTSTRAP OVERRIDES
    ==================== */
-
+.text-primary {
+    color: var(--primary) !important;
+}
+.table-primary {
+    --bs-table-bg: var(--primary);
+    --bs-table-color: #fff;
+}
 .btn-primary {
 
     background-color: var(--primary);

@@ -1,0 +1,120 @@
+<h3 class="text-primary text-center fw-bold mt-5 mb-4">
+  Books
+</h3>
+
+<div class="container">
+
+  <table class="table table-hover table-striped align-middle shadow-sm rounded overflow-hidden">
+
+    <thead class="table-primary text-center">
+
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+    </thead>
+
+    <tbody class="text-center">
+
+      @for (book of getBooks(); track book.id; let i = $index) {
+
+        <tr>
+
+          <td>{{ i + 1 }}</td>
+
+          <td class="fw-semibold">
+            {{ book.title }}
+          </td>
+
+          <td>
+            {{ book.author }}
+          </td>
+
+          <td
+            class="fw-bold"
+            [style.color]="book.price > 1000 ? 'green' : 'red'">
+
+            {{ book.price }} EGP
+
+          </td>
+
+          <td>
+            {{ book.category }}
+          </td>
+
+          <td>
+            {{ book.stock }}
+          </td>
+
+          <td>
+
+            @if (book.status === 'available') {
+
+              <span class="badge text-bg-success px-3 py-2">
+                Available
+              </span>
+
+            } @else {
+
+              <span class="badge text-bg-danger px-3 py-2">
+                Out Of Stock
+              </span>
+
+            }
+
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-sm btn-warning me-2"
+              [routerLink]="['/admin/edit-book', book.id]">
+
+              <i class="bi bi-pencil-square me-1"></i>
+              Update
+
+            </button>
+
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteBook(book.id)">
+
+              <i class="bi bi-trash me-1"></i>
+              Delete
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      }
+
+      @empty {
+
+        <tr>
+
+          <td colspan="8" class="text-center py-5">
+
+            <h5 class="fw-bold mb-2 text-primary">
+              No Books Available
+            </h5>
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>

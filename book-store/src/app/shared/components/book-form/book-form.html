@@ -1,0 +1,366 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-9">
+
+      <div class="card shadow-sm border-0 rounded-4">
+
+        <div class="card-body p-4 p-lg-5">
+
+      
+          <h2 class="fw-bold text-center mb-5 text-primary">
+            {{ mode === 'add' ? 'Add Book' : 'Update Book' }}
+          </h2>
+
+          <form #bookForm="ngForm" (ngSubmit)="submit()">
+
+          
+            <div class="text-center mb-5">
+
+              <img
+                [src]="book.image || 'https://placehold.co/140x180'"
+                class="rounded shadow-sm border object-fit-cover mb-3"
+                width="140"
+                height="180"
+                alt="Book Cover">
+
+              <br>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                (click)="fileInput.click()">
+
+                <i class="bi bi-image me-2"></i>
+
+                {{ mode === 'add' ? 'Upload Cover' : 'Change Cover' }}
+
+              </button>
+
+              <input
+                #fileInput
+                type="file"
+                class="d-none"
+                accept="image/*"
+                (change)="uploadImage($event)">
+
+            </div>
+
+           
+            <div class="row g-4 mb-4">
+
+              <div class="col-md-6">
+
+                <label class="form-label fw-semibold">
+                  Book Title
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="title"
+                  [(ngModel)]="book.title"
+                  #titleField="ngModel"
+                  placeholder="Enter book title"
+                  required
+                  minlength="3">
+
+                @if(titleField.invalid && (titleField.dirty || titleField.touched)){
+
+                  <div class="alert alert-danger mt-2">
+
+                    @if(titleField.errors?.['required']){
+                      <p class="mb-0">
+                        Book title is required.
+                      </p>
+                    }
+
+                    @if(titleField.errors?.['minlength']){
+                      <p class="mb-0">
+                        Book title must be at least 3 characters.
+                      </p>
+                    }
+
+                  </div>
+
+                }
+
+              </div>
+
+              <div class="col-md-6">
+
+                <label class="form-label fw-semibold">
+                  Author
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="author"
+                  [(ngModel)]="book.author"
+                  #authorField="ngModel"
+                  placeholder="Author name"
+                  required
+                  minlength="3">
+
+                @if(authorField.invalid && (authorField.dirty || authorField.touched)){
+
+                  <div class="alert alert-danger mt-2">
+
+                    @if(authorField.errors?.['required']){
+                      <p class="mb-0">
+                        Author name is required.
+                      </p>
+                    }
+
+                    @if(authorField.errors?.['minlength']){
+                      <p class="mb-0">
+                        Author name must be at least 3 characters.
+                      </p>
+                    }
+
+                  </div>
+
+                }
+
+              </div>
+
+            </div>
+
+            <div class="row g-4 mb-4">
+
+              <div class="col-md-6">
+
+                <label class="form-label fw-semibold">
+                  Category
+                </label>
+
+                <select
+                  class="form-select"
+                  name="category"
+                  [(ngModel)]="book.category"
+                  #categoryField="ngModel"
+                  required>
+
+                  <option value="" disabled>
+                    Select Category
+                  </option>
+
+                  <option value="fiction">Fiction</option>
+                  <option value="mystery">Mystery</option>
+                  <option value="science-fiction">Science Fiction</option>
+                  <option value="self-help">Self-Help</option>
+                  <option value="history">History</option>
+                  <option value="biography">Biography</option>
+                  <option value="fantasy">Fantasy</option>
+
+                </select>
+
+                @if(categoryField.invalid && (categoryField.dirty || categoryField.touched)){
+
+                  <div class="alert alert-danger mt-2">
+                    <p class="mb-0">
+                      Category is required.
+                    </p>
+                  </div>
+
+                }
+
+              </div>
+
+              <div class="col-md-6">
+
+                <label class="form-label fw-semibold">
+                  Price
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="price"
+                  [(ngModel)]="book.price"
+                  #priceField="ngModel"
+                  placeholder="$0.00"
+                  required
+                  min="1">
+
+                @if(priceField.invalid && (priceField.dirty || priceField.touched)){
+
+                  <div class="alert alert-danger mt-2">
+
+                    @if(priceField.errors?.['required']){
+                      <p class="mb-0">
+                        Price is required.
+                      </p>
+                    }
+
+                    @if(priceField.errors?.['min']){
+                      <p class="mb-0">
+                        Price must be greater than zero.
+                      </p>
+                    }
+
+                  </div>
+
+                }
+
+              </div>
+
+            </div>
+                       
+            <div class="row g-4 mb-4">
+
+              <div class="col-md-6">
+
+                <label class="form-label fw-semibold">
+                  Stock
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="stock"
+                  [(ngModel)]="book.stock"
+                  #stockField="ngModel"
+                  placeholder="Available quantity"
+                  required
+                  min="1">
+
+                @if(stockField.invalid && (stockField.dirty || stockField.touched)){
+
+                  <div class="alert alert-danger mt-2">
+
+                    @if(stockField.errors?.['required']){
+                      <p class="mb-0">
+                        Stock is required.
+                      </p>
+                    }
+
+                    @if(stockField.errors?.['min']){
+                      <p class="mb-0">
+                        Stock must be greater than zero.
+                      </p>
+                    }
+
+                  </div>
+
+                }
+
+              </div>
+
+            </div>
+
+            <div class="mb-4">
+
+              <label class="form-label fw-semibold">
+                Description
+              </label>
+
+              <textarea
+                rows="5"
+                class="form-control"
+                name="description"
+                [(ngModel)]="book.description"
+                #descriptionField="ngModel"
+                placeholder="Write a short description..."
+                required
+                minlength="20">
+              </textarea>
+
+              @if(descriptionField.invalid && (descriptionField.dirty || descriptionField.touched)){
+
+                <div class="alert alert-danger mt-2">
+
+                  @if(descriptionField.errors?.['required']){
+                    <p class="mb-0">
+                      Description is required.
+                    </p>
+                  }
+
+                  @if(descriptionField.errors?.['minlength']){
+                    <p class="mb-0">
+                      Description must be at least 20 characters.
+                    </p>
+                  }
+
+                </div>
+
+              }
+
+            </div>
+
+          
+            <div class="mb-5">
+
+              <label class="form-label fw-semibold d-block mb-3">
+                Status
+              </label>
+
+              <div class="form-check form-check-inline">
+
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="available"
+                  name="status"
+                  value="available"
+                  [(ngModel)]="book.status"
+                  required>
+
+                <label
+                  class="form-check-label"
+                  for="available">
+
+                  Available
+
+                </label>
+
+              </div>
+
+              <div class="form-check form-check-inline">
+
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="outOfStock"
+                  name="status"
+                  value="out-of-stock"
+                  [(ngModel)]="book.status">
+
+                <label
+                  class="form-check-label"
+                  for="outOfStock">
+
+                  Out Of Stock
+
+                </label>
+
+              </div>
+
+            </div>
+
+         
+            <button
+              type="submit"
+              class="btn btn-primary w-100 py-3"
+              [disabled]="bookForm.invalid"
+             >
+              
+              {{ mode === 'add'
+                  ? 'Add Book'
+                  : 'Update Book' }}
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
