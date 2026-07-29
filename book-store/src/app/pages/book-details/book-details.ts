@@ -16,7 +16,6 @@ import { Book } from '../../core/service/models/book.model';
 export class BookDetails implements OnInit {
 
   book: Book | undefined;
-  addedToCart = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,13 +45,20 @@ export class BookDetails implements OnInit {
 
   }
 
+  isInCart(): boolean {
+
+    return this.book ? this.cartService.isInCart(this.book.id) : false;
+
+  }
+
   addToCart(): void {
 
-    if (this.book) {
+    if (!this.book) {
+      return;
+    }
 
+    if (!this.cartService.isInCart(this.book.id)) {
       this.cartService.addToCart(this.book.id);
-      this.addedToCart = true;
-
     }
 
   }

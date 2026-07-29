@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { Logo } from '../../shared/components/logo/logo';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -10,12 +11,14 @@ import { Logo } from '../../shared/components/logo/logo';
 })
 export class AdminLayout {
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
   logout(event: Event) {
     event.preventDefault();
-    // TODO: call auth service logout(), then redirect to /login
-  }
-
-  toggleTheme() {
-    // TODO: reuse the same theme-toggle logic from your nav component
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

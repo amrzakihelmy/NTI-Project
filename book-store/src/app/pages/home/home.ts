@@ -57,9 +57,17 @@ export class Home {
 
   }
 
+  isInCart(id: number): boolean {
+
+    return this.cartService.isInCart(id);
+
+  }
+
   addToCart(id: number): void {
 
-    this.cartService.addToCart(id);
+    if (!this.cartService.isInCart(id)) {
+      this.cartService.addToCart(id);
+    }
 
   }
 

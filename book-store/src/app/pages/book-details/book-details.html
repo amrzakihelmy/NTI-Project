@@ -67,11 +67,12 @@
 
           <button
             class="btn btn-lg me-3"
-            [class.btn-dark]="!addedToCart"
-            [class.btn-success]="addedToCart"
+            [class.btn-dark]="!isInCart()"
+            [class.btn-success]="isInCart()"
+            [disabled]="isInCart()"
             (click)="addToCart()">
 
-            {{ addedToCart ? 'Added to Cart' : 'Add To Cart' }}
+            {{ isInCart() ? 'Added to Cart' : 'Add To Cart' }}
 
           </button>
 
