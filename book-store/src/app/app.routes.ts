@@ -9,8 +9,6 @@ import { CustomerLayout } from './Layouts/customer-layout/customer-layout';
 
 import { NotFound } from './pages/not-found/not-found';
 import { BookDetails } from './pages/book-details/book-details';
-import { Wishlist } from './pages/wishlist/wishlist';
-import { Cart } from './pages/cart/cart';
 import { AddBook } from './pages/Admin/add-book/add-book';
 import { ListBook } from './pages/Admin/list-book/list-book';
 import { UpdateBook } from './pages/Admin/update-book/update-book';
@@ -32,11 +30,13 @@ export const routes: Routes = [
       },
       {
         path: 'wishlist',
-        component: Wishlist
+        loadComponent: () =>
+          import('./pages/wishlist/wishlist').then(m => m.Wishlist)
       },
       {
         path: 'cart',
-        component: Cart
+        loadComponent: () =>
+          import('./pages/cart/cart').then(m => m.Cart)
       }
 
       // ضيفي باقي الـ routes هنا لما الفريق يخلصها
@@ -50,7 +50,6 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminLayout,
     children: [
-      // { path: 'dashboard', component: Dashboard },
       { path: 'add-book', component: AddBook },
        {
       path: 'edit-book/:id',
@@ -58,7 +57,6 @@ export const routes: Routes = [
     },
 
       { path: 'list-books', component: ListBook },
-      // { path: 'sales-analytics', component: SalesAnalytics },
     ]
   },
 

@@ -20,6 +20,22 @@ body {
     transition: var(--transition);
 }
 
+/* ==================
+   STICKY FOOTER LAYOUT
+   Wrap a page (nav + content + footer) with .page-shell,
+   and its main content area with .page-content, so the
+   footer always sits at the bottom, even on short pages.
+   ================== */
+.page-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-content {
+    flex: 1 0 auto;
+}
+
 a {
     color: var(--primary);
     text-decoration: none;
@@ -27,15 +43,6 @@ a {
 
 a:hover {
     color: var(--primary-hover);
-}
-.theme-toggle:hover{
-    width:30px;
-    height: 30px;
-border-radius: var(--radius-sm);
-background-color: var(--bg-surface);
-display: flex;
-align-items: center;
-justify-content: center;
 }
 .card {
     background-color: var(--bg-surface);
