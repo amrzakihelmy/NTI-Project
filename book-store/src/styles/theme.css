@@ -51,7 +51,7 @@
    Dark Theme 
 =========================== */
 
-[data-theme="dark"] {
+[data-bs-theme="dark"] {
 
   --bg-main: #12131C;
   --bg-surface: #1E1F2C;

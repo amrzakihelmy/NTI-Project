@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Logo } from '../../shared/components/logo/logo';
+import { ThemeService } from '../../core/service/theme.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -9,13 +10,26 @@ import { Logo } from '../../shared/components/logo/logo';
   styleUrl: './admin-layout.css',
 })
 export class AdminLayout {
+  currentTheme = 'light';
+  constructor(private themeService: ThemeService) {}
+ngOnInit() {
 
+    this.currentTheme = this.themeService.loadTheme();
+   
+   
+
+}
   logout(event: Event) {
     event.preventDefault();
     // TODO: call auth service logout(), then redirect to /login
   }
 
-  toggleTheme() {
-    // TODO: reuse the same theme-toggle logic from your nav component
-  }
+toggleTheme() {
+
+    this.themeService.toggleTheme();
+    this.currentTheme =this.currentTheme === 'light'
+      ? 'dark'
+      : 'light';
+
+}
 }
