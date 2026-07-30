@@ -34,7 +34,8 @@
 
             <button
               class="btn btn-primary w-100 mb-2"
-              [routerLink]="['/books', book.id]">
+              [routerLink]="['/books', book.id]"
+              [disabled]="!isLogged">
               View Details
             </button>
 
@@ -42,7 +43,8 @@
               class="btn w-100 mb-2"
               [class.btn-dark]="!isInCart(book.id)"
               [class.btn-success]="isInCart(book.id)"
-              [disabled]="isInCart(book.id)"
+              [disabled]="isInCart(book.id)||!isLogged"
+              
               (click)="addToCart(book.id)">
 
               <i class="bi" [class.bi-cart-plus]="!isInCart(book.id)" [class.bi-cart-check]="isInCart(book.id)"></i>
@@ -54,6 +56,7 @@
               class="btn w-100"
               [class.btn-outline-danger]="!isInWishlist(book.id)"
               [class.btn-danger]="isInWishlist(book.id)"
+              [disabled]="!isLogged"
               (click)="toggleWishlist(book.id)">
 
               <i class="bi" [class.bi-heart]="!isInWishlist(book.id)" [class.bi-heart-fill]="isInWishlist(book.id)"></i>

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Logo } from '../logo/logo';
 import { SearchService } from '../../../core/service/search.service';
 import { CartService } from '../../../core/service/cart.service';
-
+import {AuthService} from'../../../core/service/auth.service';
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -16,16 +16,18 @@ import { CartService } from '../../../core/service/cart.service';
 export class Nav {
 currentTheme = 'light';
   searchTerm = '';
-
+isLogged=false;
   constructor(
     private searchService: SearchService,
     private cartService: CartService,
-    private themeService:ThemeService
+    private themeService:ThemeService,
+    private authService:AuthService
   ) {}
 ngOnInit() {
 
     this.currentTheme =
-    localStorage.getItem('theme') || 'light';
+    localStorage.getItem('theme') || 'light'; 
+   this.isLogged= this.authService.isLoggedIn();
 
 }
   onSearch(): void {
@@ -46,5 +48,8 @@ toggleTheme() {
       ? 'dark'
       : 'light';
 
+}
+logOut(){
+    this.authService.logout();
 }
 }

@@ -92,7 +92,7 @@ hr {
 .auth-banner {
   height: 100%;
  
-  background-image: linear-gradient(#301b03d7, #301b03d7), url('../assets/images/auth.jpg');
+  background-image: linear-gradient(#301b03d7, #301b03d7), url('../../public/auth.jpg');
   background-size: cover;
   background-position: center;
   color: white;
