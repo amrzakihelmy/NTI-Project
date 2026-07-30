@@ -5,7 +5,7 @@ import { Home } from './pages/home/home';
 
 import { AdminLayout } from './Layouts/admin-layout/admin-layout';
 import { CustomerLayout } from './Layouts/customer-layout/customer-layout';
-
+import { adminGuard } from '../app/guards/admin-auth-guard';
 
 import { NotFound } from './pages/not-found/not-found';
 import { BookDetails } from './pages/book-details/book-details';
@@ -39,16 +39,12 @@ export const routes: Routes = [
           import('./pages/cart/cart').then(m => m.Cart)
       }
 
-      // ضيفي باقي الـ routes هنا لما الفريق يخلصها
-  
-      // { path: 'books', component: Books },
-   
-      // { path: 'checkout', component: Checkout },
     ]
   },
   {
     path: 'admin',
     component: AdminLayout,
+    canActivate: [adminGuard],
     children: [
       { path: 'add-book', component: AddBook },
        {
@@ -62,6 +58,6 @@ export const routes: Routes = [
 
 
 
-  // MUST be last:
+ 
   { path: '**', component: NotFound }
 ];
