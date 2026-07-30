@@ -8,10 +8,7 @@ import { CustomerLayout } from './Layouts/customer-layout/customer-layout';
 import { adminGuard } from '../app/guards/admin-auth-guard';
 
 import { NotFound } from './pages/not-found/not-found';
-import { BookDetails } from './pages/book-details/book-details';
-import { AddBook } from './pages/Admin/add-book/add-book';
-import { ListBook } from './pages/Admin/list-book/list-book';
-import { UpdateBook } from './pages/Admin/update-book/update-book';
+
 export const routes: Routes = [
     {path:"",redirectTo:"home",pathMatch:"full"},
     {path:"home",component:Home},
@@ -26,7 +23,8 @@ export const routes: Routes = [
     children: [
       {
         path: 'books/:id',
-        component: BookDetails
+       loadComponent: () =>
+          import('./pages/book-details/book-details').then(m => m.BookDetails)
       },
       {
         path: 'wishlist',
@@ -39,6 +37,7 @@ export const routes: Routes = [
           import('./pages/cart/cart').then(m => m.Cart)
       }
 
+     
     ]
   },
   {
@@ -46,13 +45,16 @@ export const routes: Routes = [
     component: AdminLayout,
     canActivate: [adminGuard],
     children: [
-      { path: 'add-book', component: AddBook },
+      { path: 'add-book',  loadComponent: () =>
+          import('./pages/Admin/add-book/add-book').then(m => m.AddBook)},
        {
       path: 'edit-book/:id',
-      component: UpdateBook
+       loadComponent: () =>
+          import('./pages/Admin/update-book/update-book').then(m => m.UpdateBook)
     },
 
-      { path: 'list-books', component: ListBook },
+      { path: 'list-books',  loadComponent: () =>
+          import('./pages/Admin/list-book/list-book').then(m => m.ListBook) },
     ]
   },
 

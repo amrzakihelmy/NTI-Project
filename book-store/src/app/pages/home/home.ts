@@ -7,6 +7,7 @@ import { WishlistService } from '../../core/service/wishlist.service';
 import { CartService } from '../../core/service/cart.service';
 import { SearchService } from '../../core/service/search.service';
 import { Book } from '../../core/service/models/book.model';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,16 @@ import { Book } from '../../core/service/models/book.model';
   styleUrl: './home.css',
 })
 export class Home {
+isLogged=false;
+ngOnInit() {
 
+   this.isLogged= this.authService.isLoggedIn();
+
+}
   constructor(
     private bookService: BookService,
     private wishlistService: WishlistService,
+    private authService:AuthService,
     private cartService: CartService,
     private searchService: SearchService
   ) {}
