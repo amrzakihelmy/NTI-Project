@@ -1,3 +1,4 @@
+import { ThemeService } from './../../core/service/theme.service';
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { Logo } from '../../shared/components/logo/logo';
@@ -10,15 +11,29 @@ import { AuthService } from '../../core/service/auth.service';
   styleUrl: './admin-layout.css',
 })
 export class AdminLayout {
-
+currentTheme = 'light';
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private themeService:ThemeService
   ) {}
+ngOnInit() {
 
+    this.currentTheme =
+    localStorage.getItem('theme') || 'light';
+
+}
   logout(event: Event) {
     event.preventDefault();
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  toggleTheme() {
+
+    this.themeService.toggleTheme();
+    this.currentTheme =this.currentTheme === 'light'
+      ? 'dark'
+      : 'light';
+
+}
 }

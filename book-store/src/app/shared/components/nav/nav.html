@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navbar">
   <div class="container-fluid d-flex justify-content-center m-2">
   <app-logo></app-logo>
   <div class="d-flex align-items-center">
@@ -33,7 +33,17 @@
 </a>
 
      </div>
+    
     <button  class="btn btn-secondry m-2" routerLink='/login'>Log in</button>
-   <button  class="btn btn-primary" routerLink='/sign-up'>Sign in</button>
+   <button  class="btn btn-primary" routerLink='/sign-up'>Sign up</button>
+   <div class="d-flex ms-5 ">
+     <a class="theme-toggle" role="button" (click)="toggleTheme()">
+      @if (currentTheme === 'light') {
+    <i class="bi bi-moon"></i>
+  } @else {
+    <i class="bi bi-sun"></i>
+  }
+      </a>
+    </div>
   </div>
   </nav>

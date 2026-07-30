@@ -1,3 +1,4 @@
+import { ThemeService } from './../../../core/service/theme.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,14 +14,20 @@ import { CartService } from '../../../core/service/cart.service';
   styleUrl: './nav.css',
 })
 export class Nav {
-
+currentTheme = 'light';
   searchTerm = '';
 
   constructor(
     private searchService: SearchService,
-    private cartService: CartService
+    private cartService: CartService,
+    private themeService:ThemeService
   ) {}
+ngOnInit() {
 
+    this.currentTheme =
+    localStorage.getItem('theme') || 'light';
+
+}
   onSearch(): void {
 
     this.searchService.setSearchTerm(this.searchTerm);
@@ -32,5 +39,12 @@ export class Nav {
     return this.cartService.getCartCount();
 
   }
+toggleTheme() {
 
+    this.themeService.toggleTheme();
+    this.currentTheme =this.currentTheme === 'light'
+      ? 'dark'
+      : 'light';
+
+}
 }

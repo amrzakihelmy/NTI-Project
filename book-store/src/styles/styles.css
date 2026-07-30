@@ -210,38 +210,6 @@ hr {
 }
 
 
-
-.dropdown-menu {
-
-    background-color: var(--bg-surface);
-    border-color: var(--border-color);
-
-}
-
-
-
-.page-link {
-
-    color: var(--primary);
-
-}
-
-.page-link:hover {
-
-    color: var(--primary-hover);
-
-}
-
-
-
-.active>.page-link {
-
-    background-color: var(--primary);
-    border-color: var(--primary);
-
-}
-
-
 .table {
 
     color: var(--text-primary);
@@ -273,15 +241,6 @@ hr {
     color: var(--text-muted);
 }
 
-.border-custom {
-    border-color: var(--border-color);
-}
 
-.rounded-custom {
-    border-radius: var(--radius-md);
-}
 
-.shadow-custom {
-    box-shadow: var(--shadow-sm);
-}
 

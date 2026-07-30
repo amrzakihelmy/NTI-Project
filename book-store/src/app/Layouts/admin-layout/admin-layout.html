@@ -26,6 +26,13 @@
   <div class="admin-main flex-grow-1">
     <header class="admin-topbar d-flex align-items-center justify-content-between px-4">
       <h5 class="mb-0 admin-page-title">Admin Panel</h5>
+      <a class="theme-toggle" role="button" (click)="toggleTheme()">
+      @if (currentTheme === 'light') {
+    <i class="bi bi-moon"></i>
+  } @else {
+    <i class="bi bi-sun"></i>
+  }
+      </a>
     </header>
 
     <main class="admin-content p-4">
