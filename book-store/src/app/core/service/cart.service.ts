@@ -10,78 +10,128 @@ export interface CartItem {
 })
 export class CartService {
 
-  private items: CartItem[] = [];
+  constructor() { }
 
-  constructor() {
-    this.items = this.getCartItems();
+
+  private getCartKey(): string {
+
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    );
+
+    return currentUser
+      ? `cart_${currentUser.id}`
+      : 'cart_guest';
+
   }
 
   getCartItems(): CartItem[] {
 
-    return JSON.parse(localStorage.getItem('cart') || '[]');
+    return JSON.parse(
+      localStorage.getItem(this.getCartKey()) || '[]'
+    );
 
   }
 
-  saveCartItems(): void {
+  
+  private saveCartItems(items: CartItem[]): void {
 
-    localStorage.setItem('cart', JSON.stringify(this.items));
+    localStorage.setItem(
+      this.getCartKey(),
+      JSON.stringify(items)
+    );
 
   }
 
+ 
   addToCart(bookId: number, quantity: number = 1): void {
 
-    const existingItem = this.items.find(item => item.bookId === bookId);
+    const items = this.getCartItems();
+
+    const existingItem = items.find(
+      item => item.bookId === bookId
+    );
 
     if (existingItem) {
+
       existingItem.quantity += quantity;
+
     } else {
-      this.items.push({ bookId, quantity });
+
+      items.push({
+        bookId,
+        quantity
+      });
+
     }
 
-    this.saveCartItems();
+    this.saveCartItems(items);
 
   }
+
 
   updateQuantity(bookId: number, quantity: number): void {
 
-    const item = this.items.find(item => item.bookId === bookId);
+    const items = this.getCartItems();
 
-    if (item) {
+    const item = items.find(
+      item => item.bookId === bookId
+    );
 
-      if (quantity < 1) {
-        this.removeFromCart(bookId);
-      } else {
-        item.quantity = quantity;
-        this.saveCartItems();
-      }
+    if (!item) return;
 
+    if (quantity < 1) {
+
+      this.removeFromCart(bookId);
+
+      return;
     }
 
+    item.quantity = quantity;
+
+    this.saveCartItems(items);
+
   }
+
 
   removeFromCart(bookId: number): void {
 
-    this.items = this.items.filter(item => item.bookId !== bookId);
-    this.saveCartItems();
+    const items = this.getCartItems();
+
+    const updatedItems = items.filter(
+      item => item.bookId !== bookId
+    );
+
+    this.saveCartItems(updatedItems);
 
   }
 
+  
   isInCart(bookId: number): boolean {
 
-    return this.items.some(item => item.bookId === bookId);
+    return this.getCartItems().some(
+      item => item.bookId === bookId
+    );
 
   }
+
 
   getCartCount(): number {
 
-    return this.items.reduce((total, item) => total + item.quantity, 0);
+    return this.getCartItems().reduce(
+
+      (total, item) => total + item.quantity,
+
+      0
+
+    );
 
   }
 
+  
   clearCart(): void {
 
-    this.items = [];
-    this.saveCartItems();
+    this.saveCartItems([]);
 
   }
 

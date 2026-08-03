@@ -5,36 +5,54 @@ import { Injectable } from '@angular/core';
 })
 export class WishlistService {
 
-  private ids: number[] = [];
+  constructor() { }
 
-  constructor() {
-    this.ids = this.getWishlistIds();
+  private getWishlistKey(): string {
+
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    );
+
+    return currentUser
+      ? `wishlist_${currentUser.id}`
+      : 'wishlist_guest';
+
   }
 
   getWishlistIds(): number[] {
 
-    return JSON.parse(localStorage.getItem('wishlist') || '[]');
+    return JSON.parse(
+      localStorage.getItem(this.getWishlistKey()) || '[]'
+    );
 
   }
 
-  saveWishlistIds(): void {
+  private saveWishlistIds(ids: number[]): void {
 
-    localStorage.setItem('wishlist', JSON.stringify(this.ids));
+    localStorage.setItem(
+      this.getWishlistKey(),
+      JSON.stringify(ids)
+    );
 
   }
+
 
   isInWishlist(id: number): boolean {
 
-    return this.ids.includes(id);
+    return this.getWishlistIds().includes(id);
 
   }
 
+
   addToWishlist(id: number): void {
 
-    if (!this.ids.includes(id)) {
+    const ids = this.getWishlistIds();
 
-      this.ids.push(id);
-      this.saveWishlistIds();
+    if (!ids.includes(id)) {
+
+      ids.push(id);
+
+      this.saveWishlistIds(ids);
 
     }
 
@@ -42,18 +60,33 @@ export class WishlistService {
 
   removeFromWishlist(id: number): void {
 
-    this.ids = this.ids.filter(bookId => bookId !== id);
-    this.saveWishlistIds();
+    const ids = this.getWishlistIds();
+
+    const updatedIds = ids.filter(
+      bookId => bookId !== id
+    );
+
+    this.saveWishlistIds(updatedIds);
 
   }
 
   toggleWishlist(id: number): void {
 
     if (this.isInWishlist(id)) {
+
       this.removeFromWishlist(id);
+
     } else {
+
       this.addToWishlist(id);
+
     }
+
+  }
+
+  clearWishlist(): void {
+
+    this.saveWishlistIds([]);
 
   }
 

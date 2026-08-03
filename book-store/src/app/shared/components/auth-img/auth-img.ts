@@ -6,4 +6,6 @@ import { Logo } from '../logo/logo';
   templateUrl: './auth-img.html',
   styleUrl: './auth-img.css',
 })
-export class AuthImg {}
+export class AuthImg {
+  bannerImage = '/auth.jpg';
+}
