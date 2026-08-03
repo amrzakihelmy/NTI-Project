@@ -10,10 +10,10 @@ import { Book } from '../../core/service/models/book.model';
 import { AuthService } from '../../core/service/auth.service';
 import {ContactUs}from '../../shared/components/contact-us/contact-us';
 import { HeroSection } from '../../shared/components/hero-section/hero-section';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 @Component({
   selector: 'app-home',
-  imports: [Nav, Footer, RouterLink,ContactUs,HeroSection,NgxPaginationModule],
+  imports: [Nav, Footer, RouterLink,ContactUs,HeroSection],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
