@@ -55,6 +55,7 @@ export const routes: Routes = [
 
       { path: 'list-books',  loadComponent: () =>
           import('./pages/Admin/list-book/list-book').then(m => m.ListBook) },
+          { path: '',  redirectTo:"list-books",pathMatch:"full"}
     ]
   },
 

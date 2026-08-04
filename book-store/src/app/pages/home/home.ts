@@ -8,10 +8,12 @@ import { CartService } from '../../core/service/cart.service';
 import { SearchService } from '../../core/service/search.service';
 import { Book } from '../../core/service/models/book.model';
 import { AuthService } from '../../core/service/auth.service';
+import {ContactUs}from '../../shared/components/contact-us/contact-us';
+import { HeroSection } from '../../shared/components/hero-section/hero-section';
 
 @Component({
   selector: 'app-home',
-  imports: [Nav, Footer, RouterLink],
+  imports: [Nav, Footer, RouterLink,ContactUs,HeroSection],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

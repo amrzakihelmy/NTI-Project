@@ -1,0 +1,221 @@
+ <h2 class="fw-bold  mb-4 text-center text-primary">
+            Contact Us
+          </h2>
+<div class="container-fluid p-0">
+
+  <div class="row g-0 min-vh-100">
+
+    <div class="col-lg-6">
+
+      <div
+        class="banner h-100 d-flex align-items-center"
+        [style.background-image]="
+          'linear-gradient(rgba(48,27,3,.75), rgba(48,27,3,.75)), url(' + bannerImage + ')'
+        ">
+
+        <div class="text-white px-5">
+
+         
+
+          <p class="lead fst-italic">
+            "We would love to hear from you! Please reach out to us with any
+            questions, comments, or feedback you may have."
+          </p>
+
+          <hr class="border-light w-25">
+
+          <p class="fs-5 mb-2">
+             Book Store Team
+          </p>
+
+          <p class="mb-0">
+            We usually reply within 24 hours.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+   
+    <div class="col-lg-6 d-flex align-items-center ">
+
+      <div class="contact-form w-100 p-5">
+
+        <h2 class="fw-bold mb-2 text-primary">
+          Send us a Message
+        </h2>
+
+        <p class="text-muted mb-4">
+          Fill out the form below and we'll get back to you soon.
+        </p>
+
+        <form #contactForm="ngForm">
+
+         
+          <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+              <label class="form-label">
+                First Name
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="firstName"
+                [(ngModel)]="firstName"
+                #firstNameField="ngModel"
+                required
+                minlength="3"
+                placeholder="first name">
+
+              @if(firstNameField.invalid && (firstNameField.dirty ||
+              firstNameField.touched)){
+
+              <small class="text-danger">
+
+                @if(firstNameField.errors?.['required']){
+                First name is required.
+                }
+
+                @if(firstNameField.errors?.['minlength']){
+                Minimum 3 characters.
+                }
+
+              </small>
+
+              }
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+              <label class="form-label">
+                Last Name
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="lastName"
+                [(ngModel)]="lastName"
+                #lastNameField="ngModel"
+                required
+                minlength="3"
+                placeholder="last name">
+
+              @if(lastNameField.invalid && (lastNameField.dirty ||
+              lastNameField.touched)){
+
+              <small class="text-danger">
+
+                @if(lastNameField.errors?.['required']){
+                Last name is required.
+                }
+
+                @if(lastNameField.errors?.['minlength']){
+                Minimum 3 characters.
+                }
+
+              </small>
+
+              }
+
+            </div>
+
+          </div>
+
+          
+          <div class="mb-3">
+
+            <label class="form-label">
+              Email
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="email"
+              #emailField="ngModel"
+              required
+              email
+              placeholder="name@example.com">
+
+            @if(emailField.invalid && (emailField.dirty ||
+            emailField.touched)){
+
+            <small class="text-danger">
+
+              @if(emailField.errors?.['required']){
+              Email is required.
+              }
+
+              @if(emailField.errors?.['email']){
+              Invalid Email.
+              }
+
+            </small>
+
+            }
+
+          </div>
+
+         
+
+          <div class="mb-4">
+
+            <label class="form-label">
+              Message
+            </label>
+
+            <textarea
+              class="form-control"
+              rows="6"
+              name="message"
+              [(ngModel)]="message"
+              #messageField="ngModel"
+              required
+              minlength="10"
+              placeholder="Write your message...">
+            </textarea>
+
+            @if(messageField.invalid && (messageField.dirty ||
+            messageField.touched)){
+
+            <small class="text-danger">
+
+              @if(messageField.errors?.['required']){
+              Message is required.
+              }
+
+              @if(messageField.errors?.['minlength']){
+              Minimum 10 characters.
+              }
+
+            </small>
+
+            }
+
+          </div>
+
+          <button
+            class="btn btn-primary w-100 py-3"
+            type="submit"
+            [disabled]="contactForm.invalid">
+
+            Send Message
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
